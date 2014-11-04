@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-tern-a-tool-to-analyze-javascript-source-code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/" class="article-date">
+  <time datetime="2014-11-04T13:44:37.000Z" itemprop="datePublished">Nov 4 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/">tern: a tool to analyze javascript source code</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I use NodeJS and JavaScript a lot for web development. I love it because it is<br>a lightweight language comparing to Java, C++. It has many handy feature brings<br>from function programming, like clourse, anonymous function and function as<br>first-class object.<br>NodeJS’s “callback-driven” style is also quiet staightforward and simple model to handle<br>async operation in single thread.</p>
+<p>And after you get familiar with a language. You may frequently feel like some<br>parts of coding should be done automatically. To get these jobs automatically<br>done, we need to teach computers to get some kinds of “understanding” of the<br>language and source code, and also need to teach them what the job is.</p>
+<p>The first task is hard for all most every popular language. Languages have their<br>dark part. C has a very clear semantic. But the macro and preprocessor<br>instructions could be a mess. C++ has its template system. And for dynamic<br>language with eval, you could never statically know excatly what will happens in<br>the runtime. Besides of that, features like delay-binding also could obstruct<br>building a static analyzing tool to understand source code.</p>
+<p>Luckily there is a theory for this. It is so called abstract<br>interpretation. i.e. you run the code line by line, constructing variables from<br>others. But all the variables does not contain any real data. Instead, they<br>contains infomation you are interesting like possible integer range.</p>
+<p>tern is that kind of library for JavaScript. The author (not me, it is the same<br>author of acorn and CodeMirror) built up abstract interpretation to keep track<br>of type infomation for variables and functions. With those infomation, tern<br>could be able to determine type of variables and functions. In addition, it is<br>scope-sensitive, so the result could also be used for refactoring.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/" data-id="vdq9658o22085cu9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-sgrep-idea-followup-graspjs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/11/04/sgrep-idea-followup-graspjs/" class="article-date">
@@ -95,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/04/sgrep-idea-followup-graspjs/" data-id="p9j3yc48fr4h0j85" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/11/04/sgrep-idea-followup-graspjs/" data-id="j8jmqjngufyr0zak" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -148,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="0azh3u8bqom52uya" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="z1x9809e0qwezj8f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ideas/">ideas</a></li></ul>
@@ -189,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/27/first-post/" data-id="puqwbw42lts2tddu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/27/first-post/" data-id="89winwxiyqnlrl27" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/27/hello-world/" data-id="adnbtajrjmzl28vn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/27/hello-world/" data-id="vo3slhr3ein336dn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -272,7 +315,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideas/">ideas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideas/">ideas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -281,7 +324,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ideas/" style="font-size: NaNpx;">ideas</a><a href="/tags/javascript/" style="font-size: NaNpx;">javascript</a><a href="/tags/tools/" style="font-size: NaNpx;">tools</a>
+      <a href="/tags/ideas/" style="font-size: 10.00px;">ideas</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/tools/" style="font-size: 20.00px;">tools</a>
     </div>
   </div>
 
@@ -290,7 +333,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -300,6 +343,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/">tern: a tool to analyze javascript source code</a>
+          </li>
         
           <li>
             <a href="/2014/11/04/sgrep-idea-followup-graspjs/">sgrep idea followup: graspjs</a>

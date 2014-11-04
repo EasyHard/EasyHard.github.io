@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014/11 | Glass Bead</title>
+  <title>tern: a tool to analyze javascript source code | Glass Bead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Glass Bead">
-<meta property="og:url" content="http://yoursite.com/archives/2014/11/">
+  <meta name="description" content="I use NodeJS and JavaScript a lot for web development. I love it because it isa lightweight language comparing to Java, C++. It has many handy feature bringsfrom function programming, like clourse, an">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tern: a tool to analyze javascript source code">
+<meta property="og:url" content="http://yoursite.com/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/">
 <meta property="og:image">
 <meta property="og:site_name" content="Glass Bead">
-<meta property="og:description">
+<meta property="og:description" content="I use NodeJS and JavaScript a lot for web development. I love it because it isa lightweight language comparing to Java, C++. It has many handy feature bringsfrom function programming, like clourse, an">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glass Bead">
-<meta name="twitter:description">
+<meta name="twitter:title" content="tern: a tool to analyze javascript source code">
+<meta name="twitter:description" content="I use NodeJS and JavaScript a lot for web development. I love it because it isa lightweight language comparing to Java, C++. It has many handy feature bringsfrom function programming, like clourse, an">
   
     <link rel="alternative" href="/atom.xml" title="Glass Bead" type="application/atom+xml">
   
@@ -60,9 +60,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-tern-a-tool-to-analyze-javascript-source-code" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-tern-a-tool-to-analyze-javascript-source-code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/" class="article-date">
   <time datetime="2014-11-04T13:44:37.000Z" itemprop="datePublished">Nov 4 2014</time>
@@ -75,8 +73,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/">tern: a tool to analyze javascript source code</a>
+    <h1 class="article-title" itemprop="name">
+      tern: a tool to analyze javascript source code
     </h1>
   
 
@@ -101,56 +99,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-sgrep-idea-followup-graspjs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/04/sgrep-idea-followup-graspjs/" class="article-date">
-  <time datetime="2014-11-04T01:14:27.000Z" itemprop="datePublished">Nov 4 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/04/sgrep-idea-followup-graspjs/">sgrep idea followup: graspjs</a>
-    </h1>
+    <a href="/2014/11/04/sgrep-idea-followup-graspjs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sgrep idea followup: graspjs</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In the last post I mentioned about a syntax-sensitive grep tool for code<br>searching. Lately, when digger around to find a nodejs refactoring tool, I found<br><a href="graspjs.com" title="graspjs">graspjs</a>, very similar tool out there.</p>
-<blockquote>
-<p>Grasp is a command line utility that allows you to search and replace your JavaScript code - but unlike programs such as grep or sed, it searches the structure behind your code (the abstract syntax tree), rather than simply the text you’ve written.</p>
-</blockquote>
-<p>Pretty much the exactly idea of sgrep, isn’t it? Graspjs is<br>aiming at code refactoring rather that searching. So it designs a little new<br>language of what you are searching and capturing. The backward of it is user<br>needs to learn something new. The good part is that with this little<br>domain-specific language, code structure is much esaier to address rather<br>regular expression. To me, the DSL is clear and easy to use if you got some<br>basic concept of Mozilla’s de facto JavaScript AST.</p>
-<p>Though graspjs should be a great code searching tool. I don’t think it would be<br>sufficient as a refactoring tool. Handling code in grammar level (instead of<br>char sequence) is good. But it is not good enough for refactoring. Imagine you<br>want to rename a local variable, in grammar level you could say that you want to find<br>the declaration and usage of it and do the replace. The bad part is in the AST<br>you don’t have concept of scope. So if you declare another local variable in a<br>different scope with the same name, graspjs would replace both of them.</p>
-<p>So, in short, give it a shot if you are searching javascript code. But don’t use<br>it as a refactor tool. You desire a better one.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/04/sgrep-idea-followup-graspjs/" data-id="j8jmqjngufyr0zak" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-  
 </section>
         
           <aside id="sidebar">
