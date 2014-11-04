@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: ideas | Glass Bead</title>
+  <title>Tag: javascript tools | Glass Bead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Glass Bead">
-<meta property="og:url" content="http://yoursite.com/tags/ideas/">
+<meta property="og:url" content="http://yoursite.com/tags/javascript tools/">
 <meta property="og:image">
 <meta property="og:site_name" content="Glass Bead">
 <meta property="og:description">
@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-sgrep-grep-with-syntax-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-sgrep-idea-followup-graspjs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/28/sgrep-grep-with-syntax-sensitive/" class="article-date">
-  <time datetime="2014-05-27T23:16:35.000Z" itemprop="datePublished">May 28 2014</time>
+    <a href="/2014/11/04/sgrep-idea-followup-graspjs/" class="article-date">
+  <time datetime="2014-11-04T01:14:27.000Z" itemprop="datePublished">Nov 4 2014</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/28/sgrep-grep-with-syntax-sensitive/">sgrep: grep with syntax-sensitive</a>
+      <a class="article-title" href="/2014/11/04/sgrep-idea-followup-graspjs/">sgrep idea followup: graspjs</a>
     </h1>
   
 
@@ -84,29 +84,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Though there are lots of cross-reference tools nowadays, times to times we still<br>need to using grep to explore some codebases. grep is a great tool, but it is<br>not quiet well-suite for searching codes. grep is line-base. That makes it quiet<br>hard to match patterns like</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre>int f()
-{
-    <span class="attribute">...</span><span class="built_in">.</span>
-    <span class="attribute">...</span><span class="built_in">.</span>
-    <span class="attribute">...</span><span class="built_in">.</span>
-}
-</pre></td></tr></table></figure><br>via regex like <code>f\([^)]*\) {</code>. Thing is also true for assignment, and some<br>another syntaxes.</p>
-<p>So here is the idea, why not create a grep-like tool but it could take the<br>syntax of a programming langugue as extra information to transform user’s regex<br>to a better-fit one for grepping. It try to check what kind of syntaxes the<br>user’s regex may fall into, and then generate a new regex, which will match any<br>string that could be reduced to the syntaxes. Since it is a regex to regex<br>transform tool, it will in fact be buildup on grep and do not require AST<br>constructing for every sources.</p>
+        <p>In the last post I mentioned about a syntax-sensitive grep tool for code<br>searching. Lately, when digger around to find a nodejs refactoring tool, I found<br><a href="graspjs.com" title="graspjs">graspjs</a>, very similar tool out there.</p>
+<blockquote>
+<p>Grasp is a command line utility that allows you to search and replace your JavaScript code - but unlike programs such as grep or sed, it searches the structure behind your code (the abstract syntax tree), rather than simply the text you’ve written.</p>
+</blockquote>
+<p>Pretty much the exactly idea of sgrep, isn’t it? Graspjs is<br>aiming at code refactoring rather that searching. So it designs a little new<br>language of what you are searching and capturing. The backward of it is user<br>needs to learn something new. The good part is that with this little<br>domain-specific language, code structure is much esaier to address rather<br>regular expression. To me, the DSL is clear and easy to use if you got some<br>basic concept of Mozilla’s de facto JavaScript AST.</p>
+<p>Though graspjs should be a great code searching tool. I don’t think it would be<br>sufficient as a refactoring tool. Handling code in grammar level (instead of<br>char sequence) is good. But it is not good enough for refactoring. Imagine you<br>want to rename a local variable, in grammar level you could say that you want to find<br>the declaration and usage of it and do the replace. The bad part is in the AST<br>you don’t have concept of scope. So if you declare another local variable in a<br>different scope with the same name, graspjs would replace both of them.</p>
+<p>So, in short, give it a shot if you are searching javascript code. But don’t use<br>it as a refactor tool. You desire a better one.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="4ulrz94uoyvmaq1o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/11/04/sgrep-idea-followup-graspjs/" data-id="cdl2c54tc1re9z4e" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ideas/">ideas</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript tools/">javascript tools</a></li></ul>
 
     </footer>
   </div>
