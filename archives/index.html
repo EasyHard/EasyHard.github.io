@@ -5,16 +5,13 @@
   
   <title>Archives | Glass Bead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Glass Bead">
-<meta property="og:url" content="http://yoursite.com/archives/">
+  <meta content="website" property="og:type">
+<meta property="og:title">
+<meta content="http://yoursite.com/archives/" property="og:url">
 <meta property="og:image">
-<meta property="og:site_name" content="Glass Bead">
+<meta content="Glass Bead" property="og:site_name">
 <meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glass Bead">
-<meta name="twitter:description">
+<meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Glass Bead" type="application/atom+xml">
   
@@ -62,6 +59,196 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcodejs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/07/leetcodejs/" class="article-date">
+  <time datetime="2015-09-06T19:09:08.000Z" itemprop="datePublished">Sep 7 2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/07/leetcodejs/">JavaScript for Algorithm Challenges, Fun and Troubles##</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently I tried to use JavaScript to solved some algorithm challenges in LeetCode. And I solved pretty much all the challenges in LeetCode that marked as “Hard”. <a href="http://github.com/easyhard/leetcodejs" target="_blank">You can checkout my code in this Github repo.</a>. And in my experience, my submissions are usually faster than submissions with Ruby and lots of Python submissions. Considering that my first goal is to express the algorithm nicely, and I am avoiding to do tricky performance tuning, I feel this is a quiet acceptable result.</p>
+<p>This blog is going to share some features in JavaScript that I found handy and useful when solving these challenges, and the parts that bother me. But before that, I think I should explain a little bit about why I want to do this. Even it is used widely in back-end nowadays, few people may use JavaScript to implement complex algorithms in production.</p>
+<p>The major reason of implementing algorithms in JavaScript is that implementing an algorithm elegantly and clearly requires you to be familiar with features and concepts of the language you are using. And during this process, I actually feel more confident and delightful writing algorithms with JavaScript. I did found some good features that make my life easier! Sadly I don’t utilize them at the very beginning. Those code makes me feel awful now &gt;_&lt;. </p>
+<p>And the other reason is that information could be gathered during execution of algorithms. WIth these information, the process of algorithms could be later visualize in web page. With some good presentation, the visualization can be super helpful and fun to watch. Actually, there are a few projects going through this road map.</p>
+<p>Now let’s start to talk about the handy tricks and things that bother me.</p>
+<h2 id="Array">Array</h2>
+<p>The first credit I want to give it to <code>Array</code>. <code>Array</code> is very useful in many ways. If you want a stack, you can do it with <code>Array.prototype.pop()</code>, <code>Array.prototype.push()</code> and <code>Array.length</code>. Want a queue? <code>Array.prototype.push()</code> and <code>Araay.prototype.shift()</code> can handle this. </p>
+<p>And the fact that <code>Array</code> is actually associated map rather than an actual consecutive buffer sometime helps. You don’t bother to check if the index is out of range before accessing. <code>Array</code> just silently returns <code>undefined</code>. <strong>But you also need to be very concise about this otherwise it will be a bug that drags you all the way to very late night debugging.</strong></p>
+<h2 id="Plain_Object">Plain Object</h2>
+<p>JavaScript’s plain object has many limitation comparing to Python’s <code>Dict</code> or C++’s <code>map</code>. <strong>Its key can only be string</strong>. So when you write <code>object[233] = 1</code> what actually happened is <code>object[&quot;233&quot;] = 1</code>. Despite of that, in lots of situation plain object is just what you want. If you want a hash table, plain object could be it in most situation. </p>
+<p>When you are doing dynamic programming with  <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank">memoizating</a> (which is my favorite way to implement a dynamic programming solutions when the memory footprint is not a problem, since it makes the solution looks nice and clean), plain object could be the memo since JavaScript does not have a direct way to allocate a given size tabular memory. It is like,</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>    <span class="keyword">var</span> f = {};
+    <span class="function"><span class="keyword">function</span> <span class="title">fib</span><span class="params">(n)</span> {</span>
+	    <span class="keyword">if</span> (n &lt; <span class="number">2</span>) <span class="keyword">return</span> n;
+	    <span class="keyword">if</span> (f[n] !== <span class="literal">undefined</span>) <span class="keyword">return</span> f[n];
+	    <span class="keyword">return</span> f[n] = f(n - <span class="number">1</span>) + f(n - <span class="number">2</span>);
+    }
+</pre></td></tr></table></figure>
+
+<p>The default value of missing key in plain object is <code>undefined</code>, which tells us the result of the current argument <code>n</code> has not been memoizated.</p>
+<p>Plain object can memoizate more complicate functions. For example, if the memoizating function has two parameters, plain object could store them like</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>    <span class="keyword">var</span> memo = {};
+    <span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(i, j)</span> {</span>
+	    <span class="keyword">if</span> (memo[[i, j]] !== <span class="literal">undefined</span>) <span class="keyword">return</span> memo[[i,j]];
+	    <span class="comment">// .....</span>
+	    <span class="comment">// .....</span>
+    }
+</pre></td></tr></table></figure>
+
+<p>Note that it should be <code>memo[[i, j]]</code> instead of <code>memo[i, j]</code>. <code>memo[i, j]</code> is a valid express but what it means is <code>memo[j]</code> since the evaluation of <code>i, j</code> is just <code>j</code> according the comma operation. And <code>[i,j]</code> could be convert into a string like <code>&quot;[22,33]&quot;</code> which is an one-to-one map of arguments.</p>
+<p>Or it could be like,</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>    <span class="keyword">var</span> memo = {};
+    <span class="keyword">for</span> all potential i <span class="keyword">do</span>
+	    memo[i] = {};
+    <span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(i, j)</span> {</span>
+	    <span class="keyword">if</span> (m[i][j] !== <span class="literal">undefined</span>) <span class="keyword">return</span> m[i][j];
+	    <span class="comment">// .....</span>
+	    <span class="comment">// .....</span>
+    }
+</pre></td></tr></table></figure>
+
+<p><code>memo[i][j]</code> approach has better performance in my experience. But I don’t know the implementation details of V8, so this may not be very accurate. Actually, I can not find any very definite documents about how         <code>Array</code> or plain object, so this is all of guessing. Maybe I should dig into this topic more deeply in the future.</p>
+<p>And ES6’s <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank">Map</a> can use any type of value (objects or primitive values) as key. So it also could be a good choice for memoizating. I don/t use it in my solution so far, since I am kind of afraid it is implemented as a BST rather than a hash table. Anyway, I will investigate it and do some updates.  </p>
+<h2 id="Closure">Closure</h2>
+<p>Another nice thing that JavaScript has is its closure. Closure is very useful when you want to implement your solution without populating any scope outside the function you are implementing. Take <a href="https://leetcode.com/problems/edit-distance/" target="_blank">Edit Distance</a> as an example. You are implementing <code>minDistance</code>. With closure, you can define another function <code>f</code> inside of <code>minDistance</code>, access and modify variables that is available in <code>minDistance</code>. <strong>This is not just about keeping the global namespace clean. It also makes it very easy to ensure <code>minDistance</code> does not have any side-effect since now it will not modify and access any variable outside its scope.</strong></p>
+<pre><code><span class="keyword">var</span> minDistance = <span class="function"><span class="keyword">function</span><span class="params">(word1, word2)</span> {</span>
+  <span class="keyword">var</span> n = word1.length; <span class="keyword">var</span> m = word2.length;
+  <span class="keyword">var</span> t = {};
+  <span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(i, j)</span> {</span>
+    <span class="comment">// you can access t, n, m, word1 and word2 here.</span>
+  }
+  <span class="keyword">return</span> f(<span class="number">0</span>, <span class="number">0</span>);
+};
+</code></pre><h2 id="Functional_Programming_and_Arrow_Function">Functional Programming and Arrow Function</h2>
+<p>Modern JavaScript supports many concepts in functional programming. There are <code>Array.prototype.forEach()</code>, <code>Array.prototype.reduce()</code> and so on. And the introducing of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">arrow function in ES6</a> makes them more handy and usable. If I want to iterate an array in order, <code>forEach</code> is always my first choice, since it saves me the time of typing assignments like <code>var element = elements[i]</code> and also keeps the scope clean.</p>
+<h2 id="var_and_let"><code>var</code> and <code>let</code></h2>
+<p>The problem that bothers me the most is JavaScript’s <code>var</code>, which declares variables in the function scope. I am very uncomfortable with it and keeping writing codes like</p>
+<pre><code><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; n; <span class="built_in">i</span>++) <span class="cell">{
+    // ....
+}</span>
+
+<span class="keyword">for</span> (var <span class="built_in">i</span> = n; <span class="built_in">i</span> &gt;= <span class="number">1</span>; <span class="built_in">i</span>--) <span class="cell">{
+    // ....
+}</span>
+</code></pre><p>This is awful! I keep doing these only because I am not super sure if all the loops are needed when I wrote them. And I don’t like the feel that I need to modify the code in two places when I am applying one idea simply because they have variable with same name, even though these variables actually do not have to be same. So I keep using <code>var</code> everywhere to avoid this. Shame on me!</p>
+<p>Luckily, ES6 introduced <code>let</code> as a way to declare variale in block-level scope. And it also works well with <code>for</code> statement. <strong>Sadly I know this too late and don’t use any <code>let</code> in my code.</strong> Shame on me! In fact, since all most all the <code>var</code> in my code are actually means <code>let</code>, I think I could write a simple tool to help me to update my code with <code>let</code>.</p>
+<h2 id="Implementation_of_Data_Struct">Implementation of Data Struct</h2>
+<p>The other thing that bothers me is that I can not found I definite document of how data structs in JavaScript are implemented in V8. There is detailed documents of semantic of these data structs like <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN</a>. And this is important when you are implementing algorithms since how the data structs in JavaScript are implemented will affect your run-time complexity analysis. I do hope there is a document like this, so that I can refer to. But if it is not, I will look into V8’s code to figure it out in the future.</p>
+<h2 id="Conclusion">Conclusion</h2>
+<p>After finishing 30+ challenges in JavaScript, I feel it is actually quite delightful to solve algorithm challenges with JavaScript. Due to its highly-dynamic nature, it is easier to find a way to express my idea elegantly. In the meanwhile, thanks to the JS community, the performance is still acceptable.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/09/07/leetcodejs/" data-id="9v70o1re0jh4pkuu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm javascript/">algorithm javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/10/hello-world/" class="article-date">
+  <time datetime="2015-01-09T17:55:02.144Z" itemprop="datePublished">Jan 10 2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/10/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank">trobuleshooting</a> or you can ask me on <a href="https://github.com/tommy351/hexo/issues" target="_blank">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2>
+<h3 id="Create_a_new_post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo new <span class="string">"My New Post"</span>
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank">Writing</a></p>
+<h3 id="Run_server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo server
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo generate
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo deploy
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/10/hello-world/" data-id="pehjavgxcmbjx486" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-tern-a-tool-to-analyze-javascript-source-code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/" class="article-date">
@@ -93,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/" data-id="vdq9658o22085cu9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/" data-id="b99jyftiottgf4yr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -138,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/11/04/sgrep-idea-followup-graspjs/" data-id="j8jmqjngufyr0zak" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/11/04/sgrep-idea-followup-graspjs/" data-id="cdzk3n79zoljhpl2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -173,7 +360,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Though there are lots of cross-reference tools nowadays, times to times we still<br>need to using grep to explore some codebases. grep is a great tool, but it is<br>not quiet well-suite for searching codes. grep is line-base. That makes it quiet<br>hard to match patterns like</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -185,13 +372,15 @@
     <span class="attribute">...</span><span class="built_in">.</span>
     <span class="attribute">...</span><span class="built_in">.</span>
 }
-</pre></td></tr></table></figure><br>via regex like <code>f\([^)]*\) {</code>. Thing is also true for assignment, and some<br>another syntaxes.</p>
+</pre></td></tr></table></figure>
+
+<p>via regex like <code>f\([^)]*\) {</code>. Thing is also true for assignment, and some<br>another syntaxes.</p>
 <p>So here is the idea, why not create a grep-like tool but it could take the<br>syntax of a programming langugue as extra information to transform user’s regex<br>to a better-fit one for grepping. It try to check what kind of syntaxes the<br>user’s regex may fall into, and then generate a new regex, which will match any<br>string that could be reduced to the syntaxes. Since it is a regex to regex<br>transform tool, it will in fact be buildup on grep and do not require AST<br>constructing for every sources.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="z1x9809e0qwezj8f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="l5c82nfr3kmbsd01" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ideas/">ideas</a></li></ul>
@@ -232,69 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/27/first-post/" data-id="89winwxiyqnlrl27" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/27/hello-world/" class="article-date">
-  <time datetime="2014-05-27T10:34:41.000Z" itemprop="datePublished">May 27 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank">trobuleshooting</a> or you can ask me on <a href="https://github.com/tommy351/hexo/issues" target="_blank">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ hexo new <span class="string">"My New Post"</span>
-</pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ hexo server
-</pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ hexo generate
-</pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ hexo deploy
-</pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/27/hello-world/" data-id="vo3slhr3ein336dn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/27/first-post/" data-id="f3uf4jzej78ajsvl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +442,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideas/">ideas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm javascript/">algorithm javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideas/">ideas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -324,7 +451,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ideas/" style="font-size: 10.00px;">ideas</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/tools/" style="font-size: 20.00px;">tools</a>
+      <a href="/tags/algorithm javascript/" style="font-size: 10.00px;">algorithm javascript</a><a href="/tags/ideas/" style="font-size: 10.00px;">ideas</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/tools/" style="font-size: 20.00px;">tools</a>
     </div>
   </div>
 
@@ -333,7 +460,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -345,6 +472,14 @@
       <ul>
         
           <li>
+            <a href="/2015/09/07/leetcodejs/">JavaScript for Algorithm Challenges, Fun and Troubles##</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/10/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
             <a href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/">tern: a tool to analyze javascript source code</a>
           </li>
         
@@ -354,14 +489,6 @@
         
           <li>
             <a href="/2014/05/28/sgrep-grep-with-syntax-sensitive/">sgrep: grep with syntax-sensitive</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/27/first-post/">My First Post</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/27/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -376,7 +503,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2014 EasyHard<br>
+      &copy; 2015 EasyHard<br>
       Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
     </div>
   </div>

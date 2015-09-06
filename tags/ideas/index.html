@@ -5,16 +5,13 @@
   
   <title>Tag: ideas | Glass Bead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Glass Bead">
-<meta property="og:url" content="http://yoursite.com/tags/ideas/">
+  <meta content="website" property="og:type">
+<meta property="og:title">
+<meta content="http://yoursite.com/tags/ideas/" property="og:url">
 <meta property="og:image">
-<meta property="og:site_name" content="Glass Bead">
+<meta content="Glass Bead" property="og:site_name">
 <meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Glass Bead">
-<meta name="twitter:description">
+<meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Glass Bead" type="application/atom+xml">
   
@@ -85,7 +82,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Though there are lots of cross-reference tools nowadays, times to times we still<br>need to using grep to explore some codebases. grep is a great tool, but it is<br>not quiet well-suite for searching codes. grep is line-base. That makes it quiet<br>hard to match patterns like</p>
-<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -97,13 +94,15 @@
     <span class="attribute">...</span><span class="built_in">.</span>
     <span class="attribute">...</span><span class="built_in">.</span>
 }
-</pre></td></tr></table></figure><br>via regex like <code>f\([^)]*\) {</code>. Thing is also true for assignment, and some<br>another syntaxes.</p>
+</pre></td></tr></table></figure>
+
+<p>via regex like <code>f\([^)]*\) {</code>. Thing is also true for assignment, and some<br>another syntaxes.</p>
 <p>So here is the idea, why not create a grep-like tool but it could take the<br>syntax of a programming langugue as extra information to transform user’s regex<br>to a better-fit one for grepping. It try to check what kind of syntaxes the<br>user’s regex may fall into, and then generate a new regex, which will match any<br>string that could be reduced to the syntaxes. Since it is a regex to regex<br>transform tool, it will in fact be buildup on grep and do not require AST<br>constructing for every sources.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="z1x9809e0qwezj8f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="l5c82nfr3kmbsd01" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ideas/">ideas</a></li></ul>
@@ -126,7 +125,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideas/">ideas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm javascript/">algorithm javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ideas/">ideas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -135,7 +134,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ideas/" style="font-size: 10.00px;">ideas</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/tools/" style="font-size: 20.00px;">tools</a>
+      <a href="/tags/algorithm javascript/" style="font-size: 10.00px;">algorithm javascript</a><a href="/tags/ideas/" style="font-size: 10.00px;">ideas</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/tools/" style="font-size: 20.00px;">tools</a>
     </div>
   </div>
 
@@ -144,7 +143,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">November 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -156,6 +155,14 @@
       <ul>
         
           <li>
+            <a href="/2015/09/07/leetcodejs/">JavaScript for Algorithm Challenges, Fun and Troubles##</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/10/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
             <a href="/2014/11/04/tern-a-tool-to-analyze-javascript-source-code/">tern: a tool to analyze javascript source code</a>
           </li>
         
@@ -165,14 +172,6 @@
         
           <li>
             <a href="/2014/05/28/sgrep-grep-with-syntax-sensitive/">sgrep: grep with syntax-sensitive</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/27/first-post/">My First Post</a>
-          </li>
-        
-          <li>
-            <a href="/2014/05/27/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -187,7 +186,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2014 EasyHard<br>
+      &copy; 2015 EasyHard<br>
       Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
     </div>
   </div>

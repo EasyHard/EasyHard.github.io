@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>sgrep: grep with syntax-sensitive | Glass Bead</title>
+  <title>Archives: 2015/1 | Glass Bead</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta content="article" property="og:type">
-<meta content="sgrep: grep with syntax-sensitive" property="og:title">
-<meta content="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" property="og:url">
+  <meta content="website" property="og:type">
+<meta property="og:title">
+<meta content="http://yoursite.com/archives/2015/01/" property="og:url">
 <meta property="og:image">
 <meta content="Glass Bead" property="og:site_name">
-<meta content="Though there are lots of cross-reference tools nowadays, times to times we stillneed to using grep to explore some codebases. grep is a great tool, but it isnot quiet well-suite for searching codes. g" property="og:description">
+<meta property="og:description">
 <meta content="summary" name="twitter:card">
   
     <link rel="alternative" href="/atom.xml" title="Glass Bead" type="application/atom+xml">
@@ -57,10 +57,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-sgrep-grep-with-syntax-sensitive" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/05/28/sgrep-grep-with-syntax-sensitive/" class="article-date">
-  <time datetime="2014-05-27T23:16:35.000Z" itemprop="datePublished">May 28 2014</time>
+    <a href="/2015/01/10/hello-world/" class="article-date">
+  <time datetime="2015-01-09T17:55:02.144Z" itemprop="datePublished">Jan 10 2015</time>
 </a>
     
   </div>
@@ -70,8 +72,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      sgrep: grep with syntax-sensitive
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/10/hello-world/">Hello World</a>
     </h1>
   
 
@@ -79,58 +81,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Though there are lots of cross-reference tools nowadays, times to times we still<br>need to using grep to explore some codebases. grep is a great tool, but it is<br>not quiet well-suite for searching codes. grep is line-base. That makes it quiet<br>hard to match patterns like</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre>int f()
-{
-    <span class="attribute">...</span><span class="built_in">.</span>
-    <span class="attribute">...</span><span class="built_in">.</span>
-    <span class="attribute">...</span><span class="built_in">.</span>
-}
+        <p>Welcome to <a href="http://hexo.io/" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank">trobuleshooting</a> or you can ask me on <a href="https://github.com/tommy351/hexo/issues" target="_blank">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2>
+<h3 id="Create_a_new_post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo new <span class="string">"My New Post"</span>
 </pre></td></tr></table></figure>
 
-<p>via regex like <code>f\([^)]*\) {</code>. Thing is also true for assignment, and some<br>another syntaxes.</p>
-<p>So here is the idea, why not create a grep-like tool but it could take the<br>syntax of a programming langugue as extra information to transform user’s regex<br>to a better-fit one for grepping. It try to check what kind of syntaxes the<br>user’s regex may fall into, and then generate a new regex, which will match any<br>string that could be reduced to the syntaxes. Since it is a regex to regex<br>transform tool, it will in fact be buildup on grep and do not require AST<br>constructing for every sources.</p>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank">Writing</a></p>
+<h3 id="Run_server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo server
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo generate
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ hexo deploy
+</pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank">Deployment</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/05/28/sgrep-grep-with-syntax-sensitive/" data-id="l5c82nfr3kmbsd01" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/10/hello-world/" data-id="pehjavgxcmbjx486" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ideas/">ideas</a></li></ul>
-
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2014/11/04/sgrep-idea-followup-graspjs/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          sgrep idea followup: graspjs
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/05/27/first-post/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">My First Post</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+  
 </section>
         
           <aside id="sidebar">
