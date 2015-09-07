@@ -167,6 +167,9 @@
 }</span>
 </code></pre><p>This is awful! I keep doing these only because I am not super sure if all the loops are needed when I wrote them. And I don’t like the feel that I need to modify the code in two places when I am applying one idea simply because they have variable with same name, even though these variables actually do not have to be same. So I keep using <code>var</code> everywhere to avoid this. Shame on me!</p>
 <p>Luckily, ES6 introduced <code>let</code> as a way to declare variale in block-level scope. And it also works well with <code>for</code> statement. <strong>Sadly I know this too late and don’t use any <code>let</code> in my code.</strong> Shame on me! In fact, since all most all the <code>var</code> in my code are actually means <code>let</code>, I think I could write a simple tool to help me to update my code with <code>let</code>.</p>
+<h2 id="The_Silent_NaN">The Silent NaN</h2>
+<p>And one thing that may drive you into late late night debugging is the Silent NaN. In JavaScript, when you do <code>undefined + 1</code>, there will be no error raised and JavaScript just silently return a <code>NaN</code>. And you can operate with this <code>NaN</code> long enough. You can store it into a <code>Array</code> or object, or doing number operations with in. Until something serious bad happened, everything just silently runs. And when the error raises to you, it is usually to late to give you direct clue of where the problem is.</p>
+<p>I know it is because of JavaScript’s highly dynamic design. But something I also want some guards to ensure I don’t do stupid things. I feel <a href="http://www.github.com/microsoft/typescript" target="_blank">TypeScript</a> and <a href="http://www.github.com/facebook/flow" target="_blank">flow</a> may be helpful. I will give them a shot in the following challenge implementation.</p>
 <h2 id="Implementation_of_Data_Struct">Implementation of Data Struct</h2>
 <p>The other thing that bothers me is that I can not found I definite document of how data structs in JavaScript are implemented in V8. There is detailed documents of semantic of these data structs like <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN</a>. And this is important when you are implementing algorithms since how the data structs in JavaScript are implemented will affect your run-time complexity analysis. I do hope there is a document like this, so that I can refer to. But if it is not, I will look into V8’s code to figure it out in the future.</p>
 <h2 id="Conclusion">Conclusion</h2>
@@ -175,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/09/07/leetcodejs/" data-id="csf14tdbcyl2k9pu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/09/07/leetcodejs/" data-id="ykzcd5vgankl8p49" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm javascript/">algorithm javascript</a></li></ul>
@@ -239,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/10/hello-world/" data-id="whoacds8g2c1swp4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/10/hello-world/" data-id="c5je0qu9yt7rivo7" class="article-share-link">Share</a>
       
       
     </footer>
